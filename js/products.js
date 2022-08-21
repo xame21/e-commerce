@@ -4,8 +4,8 @@ const url = "https://japceibal.github.io/emercado-api/cats_products/101.json"
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(url).then((result) => {
         if (result.status === "ok"){
-            ProductsArray = result.data.products
-            showProducts()
+            carProductsArray = result.data.products
+            showCarProducts()
          
         }
     })
@@ -13,22 +13,23 @@ document.addEventListener("DOMContentLoaded", function(e){
 
     
 
-    function showProducts(){
+    function showCarProducts(){
 
-       const productCont = document.getElementById('product-container')
-                for (let product of ProductsArray){
-                    productCont.innerHTML += `
+        
+       const carCont = document.getElementById('product-container')
+                for (let carProduct of carProductsArray){
+                    carCont.innerHTML += `
                 <div class="list-group-item list-group-item-action cursor-active">
                     <div class="row">
                         <div class="col-3">
-                            <img src="${product.image}" alt="${product.description}" class="img-thumbnail">
+                            <img src="${carProduct.image}" alt="${carProduct.description}" class="img-thumbnail">
                         </div>
                         <div class="col">
                             <div class="d-flex w-100 justify-content-between">
-                                <h4 class="mb-1">${product.name} - ${product.currency} ${product.cost}</h4>
-                                <small class="text-muted">${product.soldCount} productos</small>
+                                <h4 class="mb-1">${carProduct.name} - ${carProduct.currency} ${carProduct.cost}</h4>
+                                <small class="text-muted">${carProduct.soldCount} productos</small>
                             </div>
-                            <p class="mb-1">${product.description}</p>
+                            <p class="mb-1">${carProduct.description}</p>
                         </div>
                     </div>
                 </div>
@@ -37,4 +38,5 @@ document.addEventListener("DOMContentLoaded", function(e){
         
            
         } 
+        
     
