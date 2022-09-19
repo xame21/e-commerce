@@ -22,7 +22,10 @@ document.addEventListener("DOMContentLoaded", function(e){
   
     });
 
-  
+    function prodID(id) {
+        localStorage.setItem("prodID", id);
+        window.location = "product-info.html"
+    }
 
     function showCatProducts(array){ 
 
@@ -35,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             ((maxCost == undefined) || (maxCost != undefined && parseInt(catProduct.cost) <= maxCost))){
 
                     productapend += `
-                <div class="list-group-item list-group-item-action cursor-active">
+                <div onclick="prodID(${catProduct.id})" class="list-group-item list-group-item-action cursor-active">
                     <div class="row">
                         <div class="col-3">
                             <img src="${catProduct.image}" alt="${catProduct.description}" class="img-thumbnail">

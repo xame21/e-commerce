@@ -37,11 +37,25 @@
       </div>
     </div>
   </nav>
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+  <main class="pb-5">
+    <div class="text-center p-4">
+      <p class="lead"><b><span id="prodname"></span></b></p>
+    </div>
+      <div class="container" id="boxprodinfo">
+    </div>
+   
+    <div class="container" id="boxcoments">
+    </div>
+
+    <div class="container" id="addcomments">
+      <br>
+      <h3>COMENTAR</h3>
+      <h5>Tu opinión:</h5>
+      <form>  
+      <textarea id="textcomm" name="textarea" rows="5" cols="30"></textarea>
+      <br>
+      <input id="elbotondecoment" class="btn btn-primary" value="comentar" type="button" onclick="val();">
+      </form> 
     </div>
   </main>
   <footer class="text-muted">
