@@ -40,3 +40,14 @@ let getJSONData = function(url){
     });
 }
 document.getElementById("usuario").innerHTML=localStorage.getItem("username")
+
+usuario.innerHTML= `<div class="dropdown">
+<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+-
+</button>
+<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+  <li><a class="dropdown-item" href="sell.html">Mi Carrito</a></li>
+  <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
+  <li><a class="dropdown-item" href="index.html">Cerrar Sesión</a></li>
+</ul>
+</div>`

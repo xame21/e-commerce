@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     function showCatProducts(array){ 
 
         let productapend = ""
-       const catCont = document.getElementById('product-container')
+       const catCont = document.getElementById('product-container') 
               
        for (let catProduct of array){
 

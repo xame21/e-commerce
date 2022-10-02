@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
             <br>
             <h4><b>Imágenes ilustrativas</b></h4>
             <div  class="row mb-4" id="imgprodcont"></div>
-            </div>
+            
             `
 
             for(let imgprod of productInf.images){
@@ -42,8 +42,26 @@ document.addEventListener("DOMContentLoaded", ()=>{
               
 
             }
-                      
-                          
+            getJSONData(prod).then((result) => {
+              prodrelacion = result.data.relatedProducts;
+              relprod.innerHTML += `
+              
+              <h4>Productos Relacionados</h4>
+               
+              <div  class="row mb-4" id="relaprod"></div>`
+              
+              for(let prodsrel of prodrelacion){
+                relaprod.innerHTML += `
+               <div class="card mb-4" style="width: 15rem">
+               <img class="card-img-top" src="
+                ${prodsrel.image}">
+                </br>
+                ${prodsrel.name}</div> 
+                
+                             
+               `  } 
+               
+              })
             
    }
     );  
@@ -58,33 +76,30 @@ document.addEventListener("DOMContentLoaded", ()=>{
    <div class="list-group">
  <div class="list-group-item">
     <div class="d-flex w-100 justify-content-between">
-      <p class="mb-1"><b>${prodopi.user}</b> - ${prodopi.dateTime} - ${prodopi.score} 
+      <p class="mb-1"><b>${prodopi.user}</b> - ${prodopi.dateTime} 
       
-      <span id="star1" class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span></p>
-      
-    </div>
+      <span class="" id="stars">
+      ${puntuacion (prodopi.score)}
+    </span>
+    
+        </div>
     
     <p class="mb-1">${prodopi.description}</p>
    
   </div>
 </div>
    `
-
     }
-    
- );
- 
 
-})
+    
+ )})
+
+
 function val()
 {
   if (trimAll(document.getElementById('textcomm').value) === '')
   {
-     alert('Empty !!');
+     alert('CAMPO VACIO');
   }
 } 
 
@@ -103,7 +118,18 @@ return usuariopinion
 
 };
 
-
+function puntuacion (star) {
+  let a = "";
+  
+  for(let i = 0; i < 5; i++) {
+    if(i<star) {
+      a += `<span class="fa fa-star checked"></span>`
+    } else {
+      a += `<span class="fa fa-star"></span>`
+    }
+  }
+  return a;
+}
  
 
 
