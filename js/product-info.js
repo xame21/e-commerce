@@ -48,11 +48,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
               
               <h4>Productos Relacionados</h4>
                
-              <div  class="row mb-4" id="relaprod"></div>`
+              <div class="row mb-4" id="relaprod"></div>`
               
               for(let prodsrel of prodrelacion){
                 relaprod.innerHTML += `
-               <div class="card mb-4" style="width: 15rem">
+               <div onclick="relID(${prodsrel.id})" class="card mb-4" style="width: 15rem">
                <img class="card-img-top" src="
                 ${prodsrel.image}">
                 </br>
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
             
    }
     );  
-  
+    
 
  getJSONData(prodopin).then((result)=>{
    productComm = result.data;
@@ -131,5 +131,8 @@ function puntuacion (star) {
   return a;
 }
  
-
+function relID(id) {
+  localStorage.setItem("prodID", id);
+  window.location = "product-info.html"
+}
 
