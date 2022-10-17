@@ -46,7 +46,7 @@ usuario.innerHTML= `<div class="dropdown">
 ${userdrop}
 </button>
 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-  <li><a class="dropdown-item" href="sell.html">Mi Carrito</a></li>
+  <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
   <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
   <li><a onclick="clearuser()" class="dropdown-item" href="index.html">Cerrar Sesión</a></li>
 </ul>

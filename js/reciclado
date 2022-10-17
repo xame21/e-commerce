@@ -1,0 +1,20 @@
+reciclado
+
+
+//  const unitCostporcount = () =>{
+//   let incrementador = document.getElementById("cantidart").value; 
+//   document.getElementById("culo").innerHTML = incrementador; 
+// }
+// // function unitCostporcount (){
+// //   let incrementador = cantidart.value;
+// //   subto.innerHTML=incrementador
+// // }
+// // oninput="unitCostporcount()"
+
+//  function multiplicar(){
+//    m1 = document.getElementById("culo").innerText;
+//    m2 = document.getElementById("costporuni").innerText;
+//   r = m1*m2;
+//    document.getElementById("subto").value = r;
+//  }
+// ${parseInt(culo.value)*parseInt(cartdata.unitCost)}
