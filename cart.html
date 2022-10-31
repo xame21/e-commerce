@@ -12,6 +12,7 @@
 </head>
 
 <body>
+  <div id="alertconfirmation"></div>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -42,78 +43,201 @@
       <div class="text-center p-4">
         <h4>Carrito de compras</h4>
       </div>
-    
-    
-        <h4>Articulos a comprar</h4>
-      
-  <br>
-    <div class="container" id="cartbox">
-      
-      <table id="cardtable" class="table">
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Costo</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Subtotal</th>
-          </tr>
-        </thead>
-        <tbody>
-                   
-        </tbody>
-      </table>
-     </div>
-  </div>
-  <br>
-  <form>
-  <div class="container">
-    
-    <h4>Tipo de envío</h4>
+
+
+      <h4>Articulos a comprar</h4>
+
+      <br>
+      <div class="container" id="cartbox">
+
+        <table id="cardtable" class="table">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Costo</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
     <br>
-  <div class="form-check">
-    <input class="form-check-input" type="radio" name="flexRadioDefault" id="enviopremium" checked>
-    <label class="form-check-label" for="enviopremium">
-      Premium 2 a 5 días (15%)
-    </label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input" type="radio" name="flexRadioDefault" id="envioexpress">
-    <label class="form-check-label" for="envioexpress">
-      Express 5 a 8 días (7%)
-    </label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input" type="radio" name="flexRadioDefault" id="enviostandard">
-    <label class="form-check-label" for="enviostandard">
-      Standard 12 a 15 días (5%)
-    </label>
-  </div>
-</div>
-<br>
-<div class="container">
-  <h4>Dirección de envío</h4>
-  <br>
+    <form class="needs-validation" novalidate>
+      <div class="container">
 
-  <div class="row g-3">
-    <div class="col-md-4">
-      <label for="enviocalle" class="form-label">Calle</label>
-      <input type="text" class="form-control" id="enviocalle" required>
-    </div>
-    <div class="col-md-4">
-      <label for="envionumero" class="form-label">Número</label>
-      <input type="text" class="form-control" id="envionumero" required>
-    </div>
-    <div class="col-md-6">
-      <label for="envioesquina" class="form-label">Esquina</label>
-      <input type="text" class="form-control" id="envioesquina" placeholder="" required>
-    </div>
-  </div>
-  <br>
-  <button>TERMINAR MI COMPRA</button>
-</div>
+        <h4>Tipo de envío</h4>
+        <br>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="enviopremium" checked
+            onclick="sendType()">
+          <label class="form-check-label" for="enviopremium">
+            Premium 2 a 5 días (15%)
+          </label>
+        </div>
+        <div class="form-check" id="checksend">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="envioexpress" onclick="sendType()">
+          <label class="form-check-label" for="envioexpress">
+            Express 5 a 8 días (7%)
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="enviostandard" onclick="sendType()">
+          <label class="form-check-label" for="enviostandard">
+            Standard 12 a 15 días (5%)
+          </label>
+        </div>
+      </div>
+      <br>
+      <div class="container">
+        <h4>Dirección de envío</h4>
+        <br>
 
-</form>
+        <div class="row g-3">
+          <div class="col-md-4">
+            <label for="enviocalle" class="form-label">Calle</label>
+            <input type="text" class="form-control" id="enviocalle" required>
+            <div class="invalid-feedback">
+              Ingresa una calle
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="envionumero" class="form-label">Número</label>
+            <input type="text" class="form-control" id="envionumero" required>
+            <div class="invalid-feedback">
+              Ingresa un numero
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="envioesquina" class="form-label">Esquina</label>
+            <input type="text" class="form-control" id="envioesquina" placeholder="" required>
+            <div class="invalid-feedback">
+              Ingresa una esquina
+            </div>
+          </div>
+        </div>
+        <br>
+        <hr>
+
+        <div class="container ps-0">
+          <h4>Costos</h4>
+          <br>
+          <div class="list-group" id="">
+            <div onclick="" class="list-group-item rounded">
+              <div class="row">
+                <div class="col">
+                  <div class="d-flex w-100 justify-content-between">
+                    <p class="mb-0">Subtotal</p>
+                    <p class="mb-0">USD <span id="sumasubtotales" class="mb-0"></span></p>
+                  </div>
+                  <p class="text-muted mb-0">Costo unitario del prducto por cantidad</p>
+                </div>
+              </div>
+            </div>
+            <div onclick="" class="list-group-item rounded">
+              <div class="row">
+                <div class="col">
+                  <div class="d-flex w-100 justify-content-between">
+                    <p class="mb-0">Costo de envio</p>
+                    <p class="mb-0">USD <span id="costenvio" class="mb-0"></span></p>
+                  </div>
+                  <p class="text-muted mb-0">Segun el tipo de envio</p>
+                </div>
+              </div>
+            </div>
+            <div onclick="" class="list-group-item rounded">
+              <div class="row">
+                <div class="col">
+                  <div class="d-flex w-100 justify-content-between">
+                    <p class="mb-0">Total</p>
+                    <p class="mb-0">USD <span id="totalall" class="mb-0"></span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br>
+
+
+
+        <div class="container ps-0">
+
+          <h4>Forma de Pago</h4>
+          <br>
+          <div id="paymentmethod" >
+            <span id="noselected">No ha seleccionado </span><button type="button" id="condition"
+              class="btn btn-link ps-0 text-nowrap py-0" data-bs-toggle="modal" data-bs-target="#modalFormadePago">
+              Seleccionar </button>
+            <div class="invalid-feedback">
+              Debe seleccionar una forma de pago
+            </div>
+
+          </div>
+          <div class="modal fade" id="modalFormadePago" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title"><b>Forma de pago</b></h1>
+
+                </div>
+
+                <div class="modal-body">
+                  <div class="container">
+                    <div class="row">
+                      <span><input type="radio" id="tarjetacredito" name="pago" onclick="noHabilitar()"> Tarjeta de
+                        credito</span>
+                        <br>
+                      <div class="row">
+                        <div class="col-6 pb-4">
+                          <span>Numero de tarjeta</span><input type="text" name="ntarjeta" id="ntarjeta"
+                            class="form-control pagotarjeta" required>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-6 pb-4">
+                          <span>Codigo de seguridad</span><input type="text" name="nseguridad" id="nseguridad"
+                            class="form-control pagotarjeta" required>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-6 pb-4">
+                          <span>Fecha de vencimiento (MM/AA)</span><input type="text" name="ncaducidad" id="ncaducidad"
+                            class="form-control pagotarjeta" required>
+                        </div>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                      <span><input type="radio" id="transfer" name="pago" onclick="noHabilitar()"> Transferencia bancaria</span>
+                      <br>
+                      <div class="col-6 pb-4">
+                        <span>Numero de cuenta</span><input type="text" name="ncuenta" id="ncuenta"
+                          class="form-control pagotransfer" required>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <br>
+
+        <button type="submit" class="btn btn-primary">TERMINAR MI COMPRA</button>
+      </div>
+
+    </form>
   </main>
 
   <footer class="text-muted">
