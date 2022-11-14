@@ -25,14 +25,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
     
   </tr>`
 
-  
+
 
 
     }
     unitCostPorCount1()
   }
   )
-  
+
 });
 
 function unitCostPorCount() {
@@ -45,9 +45,9 @@ function unitCostPorCount() {
   subto.innerHTML += `
   ${productom}
   `
-  
 
-  
+
+
 
 };
 
@@ -66,7 +66,7 @@ function unitCostPorCount1() {
 
 function sendType() {
 
-document.getElementById("costenvio").innerHTML = "";
+  document.getElementById("costenvio").innerHTML = "";
   document.getElementById("enviopremium");
   document.getElementById("envioexpress");
   document.getElementById("enviostandard");
@@ -80,11 +80,11 @@ document.getElementById("costenvio").innerHTML = "";
   let premiump = parseInt(productop * premium)
   let expressp = parseInt(productop * express)
   let standardp = parseInt(productop * standard)
-  
 
-  if (enviopremium.checked) {costenvio.innerHTML += `${premiump}`};
-  if (envioexpress.checked) {costenvio.innerHTML +=`${expressp}`};
-  if (enviostandard.checked) {costenvio.innerHTML +=`${standardp}`};
+
+  if (enviopremium.checked) { costenvio.innerHTML += `${premiump}` };
+  if (envioexpress.checked) { costenvio.innerHTML += `${expressp}` };
+  if (enviostandard.checked) { costenvio.innerHTML += `${standardp}` };
 
   document.getElementById("totalall").innerHTML = "";
 
@@ -93,66 +93,66 @@ document.getElementById("costenvio").innerHTML = "";
   let sumasub1 = parseInt(sumasub)
   let sumaenvio1 = parseInt(sumaenvio)
 
-  let sumenviosubt = parseInt(sumasub1+sumaenvio1)
+  let sumenviosubt = parseInt(sumasub1 + sumaenvio1)
   totalall.innerHTML += `${sumenviosubt}`
 }
 
 (function () {
-     
+
   forms = document.querySelectorAll('.needs-validation')
-           .forEach(function (form) {
-     form.addEventListener('submit', function (event) {
-            modalVal()
-       if (!form.checkValidity()) {
-         event.preventDefault();
-         event.stopPropagation();
-        
-       }else{
-        event.preventDefault();
-        terminarCompra()
-       };
-         form.classList.add('was-validated')
-         
-     }, false)
-   })
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        modalVal()
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+
+        } else {
+          event.preventDefault();
+          terminarCompra()
+        };
+        form.classList.add('was-validated')
+
+      }, false)
+    })
 })()
 
-function modalVal(){
-  if((!transfer.checked)&&(!tarjetacredito.checked)){
+function modalVal() {
+  if ((!transfer.checked) && (!tarjetacredito.checked)) {
     noselected.classList.add("is-invalid");
-      }else{
-        noselected.classList.remove("is-invalid");
-        let formadepago = document.querySelectorAll(".pagotransfer, .pagotarjeta");
-        for(pago of formadepago){
-          if((!pago.disabled)&&(pago.value.trim()=="")){
-            noselected.classList.add("is-invalid")
-          }
-        }
+  } else {
+    noselected.classList.remove("is-invalid");
+    let formadepago = document.querySelectorAll(".pagotransfer, .pagotarjeta");
+    for (pago of formadepago) {
+      if ((!pago.disabled) && (pago.value.trim() == "")) {
+        noselected.classList.add("is-invalid")
       }
+    }
+  }
 }
 
-function noHabilitar(){
-  if ((tarjetacredito.checked)){
-    ncuenta.disabled= true;
-    ntarjeta.disabled=false;
-    nseguridad.disabled=false;
-    ncaducidad.disabled=false;
-    noselected.innerHTML=`
+function noHabilitar() {
+  if ((tarjetacredito.checked)) {
+    ncuenta.disabled = true;
+    ntarjeta.disabled = false;
+    nseguridad.disabled = false;
+    ncaducidad.disabled = false;
+    noselected.innerHTML = `
     Tarjeta de credito`
   }
-  if ((transfer.checked)){
-    ntarjeta.disabled= true; 
-    nseguridad.disabled= true;
-    ncaducidad.disabled= true;
-    ncuenta.disabled= false;
-    noselected.innerHTML= `
+  if ((transfer.checked)) {
+    ntarjeta.disabled = true;
+    nseguridad.disabled = true;
+    ncaducidad.disabled = true;
+    ncuenta.disabled = false;
+    noselected.innerHTML = `
     Transferencia bancaria`
   }
 }
 
-function terminarCompra(){
+function terminarCompra() {
   alertconfirmation.innerHTML =
-  `<div class="alert alert-success alert-dismissible" style="z-index:99999999; role="alert">
+    `<div class="alert alert-success alert-dismissible" style="z-index:99999999; role="alert">
   <div>Has comprado con exito!</div>
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>`
